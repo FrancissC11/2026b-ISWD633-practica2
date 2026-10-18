@@ -10,7 +10,8 @@ Asignar núcleos de CPU específicos:
 ```
 
 **¿Como saber el numero de procesadores virtuales que tiene una máquina?**
-## COMPLETAR
+
+El método para obtener esta información depende del sistema operativo que se utilice. En sistemas Linux, se lo encuentra escribiendo el comando nproc o lscpu directamente en la terminal. En Windows, se puede observar  abriendo el Administrador de tareas en la pestaña de Rendimiento dentro del apartado de CPU, o ejecutando el comando wmic cpu get NumberOfLogicalProcessors en el Símbolo del sistema. Para macOS, se obtiene este dato ejecutando el comando sysctl -n hw.ncpu desde la terminal.
 
 ## Ejemplos
 _Puedes copiar y ejecutar directamente cada uno de los comandos_
