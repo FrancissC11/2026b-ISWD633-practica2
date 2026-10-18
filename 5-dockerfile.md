@@ -57,13 +57,22 @@ No olvides verificar en qué directorio se encuentra el archivo Dockerfile
 ```
 
 **¿Cuántos pasos se han ejecutado?**
-# RESPONDER 
+El número de pasos ejecutados en la terminal corresponde exactamente a la cantidad de instrucciones (FROM, RUN, COPY, EXPOSE, CMD, etc.) que se hayan definido dentro de tu archivo Dockerfile.
 
 ### Inspeccionar la imagen creada
-# COMPLETAR CON UNA CAPTURA
+
+![alt text](inspeccion1.png)
+
+![alt text](inspeccion2.png)
+
+![alt text](inspeccion3.png)
+
+
 
 **Modificar el archivo index.html para incluir su nombre y luego crear una nueva versión de la imagen anterior**
 **¿Cuántos pasos se han ejecutado? ¿Observa algo diferente en la creación de la imagen**
+
+Se ejecuta la misma cantidad total de pasos, pero se observa que el proceso es casi instantáneo y la consola muestra la palabra "CACHED" en las instrucciones previas a la copia del archivo; esto evidencia que Docker está reutilizando las capas que no sufrieron alteraciones.
 
 ## Mecanismo de caché
 Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso de construcción y evitar la repetición de pasos que no han cambiado. Cada instrucción en un Dockerfile crea una capa en la imagen final. Docker intenta reutilizar las capas de una construcción anterior si no han cambiado, lo que reduce significativamente el tiempo de construcción.
@@ -75,14 +84,14 @@ Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso
 
 ### Crear un contenedor a partir de las imagen creada, mapear todos los puertos
 ```
-
+docker run -d -P --name <mi-contenedor> mi-imagen:1.0
 ```
 
 ### ¿Con que puerto host se está realizando el mapeo?
-# COMPLETAR CON LA RESPUESTA
+Al usar la bandera -P (mayúscula), Docker no usa un puerto fijo, sino que asigna de forma aleatoria un puerto disponible en tu máquina anfitriona (generalmente en el rango de 32768 a 61000). Para descubrir qué puerto exacto te asignó, debes ejecutar el comando docker ps o docker port mi-contenedor.
 
 **¿Qué es una imagen huérfana?**
-# COMPLETAR CON LA RESPUESTA
+Es una imagen residual que ha perdido su nombre y etiqueta (aparece en la lista como <none>:<none>) y no está siendo utilizada por ningún contenedor; esto suele ocurrir automáticamente cuando construyes una nueva versión de una imagen utilizando un nombre y etiqueta que ya existían en tu sistema.
 
 ### Identificar imágenes huérfanas
 ```
